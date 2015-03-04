@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MarketingListManager")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Marketing List Manager")]
+[assembly: AssemblyDescription("A tool to manage the queries of Dynamics Marketing lists and obtain member counts")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Marco Amoedo")]
 [assembly: AssemblyProduct("MarketingListManager")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
