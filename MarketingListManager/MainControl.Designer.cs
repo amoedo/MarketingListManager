@@ -31,19 +31,27 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainControl));
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonLoadList = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonCopyUrl = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonForceCount = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSplitButtonCopy = new System.Windows.Forms.ToolStripSplitButton();
+            this.copyToStaticListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyStaticListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listDataCopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onlyDataCopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyListMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButtonDeleteList = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridViewLists = new System.Windows.Forms.DataGridView();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnType = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnMemberType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripQuery = new System.Windows.Forms.ToolStrip();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.copyToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.richTextBoxQuery = new System.Windows.Forms.RichTextBox();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnType = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnMemberType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -57,7 +65,10 @@
             // 
             this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonLoadList,
-            this.toolStripButtonForceCount});
+            this.toolStripButtonCopyUrl,
+            this.toolStripButtonForceCount,
+            this.toolStripSplitButtonCopy,
+            this.toolStripButtonDeleteList});
             this.toolStripMain.Location = new System.Drawing.Point(0, 0);
             this.toolStripMain.Name = "toolStripMain";
             this.toolStripMain.Size = new System.Drawing.Size(614, 25);
@@ -73,6 +84,16 @@
             this.toolStripButtonLoadList.Text = "Load Marketing Lists";
             this.toolStripButtonLoadList.Click += new System.EventHandler(this.toolStripButtonLoadList_Click);
             // 
+            // toolStripButtonCopyUrl
+            // 
+            this.toolStripButtonCopyUrl.Enabled = false;
+            this.toolStripButtonCopyUrl.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCopyUrl.Image")));
+            this.toolStripButtonCopyUrl.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCopyUrl.Name = "toolStripButtonCopyUrl";
+            this.toolStripButtonCopyUrl.Size = new System.Drawing.Size(122, 22);
+            this.toolStripButtonCopyUrl.Text = "Copy URL to CRM";
+            this.toolStripButtonCopyUrl.Click += new System.EventHandler(this.toolStripButtonCopyUrl_Click);
+            // 
             // toolStripButtonForceCount
             // 
             this.toolStripButtonForceCount.Enabled = false;
@@ -82,6 +103,70 @@
             this.toolStripButtonForceCount.Size = new System.Drawing.Size(140, 22);
             this.toolStripButtonForceCount.Text = "Force Member Count";
             this.toolStripButtonForceCount.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripSplitButtonCopy
+            // 
+            this.toolStripSplitButtonCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripSplitButtonCopy.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToStaticListToolStripMenuItem,
+            this.copyStaticListToolStripMenuItem,
+            this.copyListMenuItem1});
+            this.toolStripSplitButtonCopy.Enabled = false;
+            this.toolStripSplitButtonCopy.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButtonCopy.Image")));
+            this.toolStripSplitButtonCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButtonCopy.Name = "toolStripSplitButtonCopy";
+            this.toolStripSplitButtonCopy.Size = new System.Drawing.Size(51, 22);
+            this.toolStripSplitButtonCopy.Text = "Copy";
+            this.toolStripSplitButtonCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            // 
+            // copyToStaticListToolStripMenuItem
+            // 
+            this.copyToStaticListToolStripMenuItem.Name = "copyToStaticListToolStripMenuItem";
+            this.copyToStaticListToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.copyToStaticListToolStripMenuItem.Text = "Copy Dynamic to Static List";
+            this.copyToStaticListToolStripMenuItem.Click += new System.EventHandler(this.copyToStaticListToolStripMenuItem_Click);
+            // 
+            // copyStaticListToolStripMenuItem
+            // 
+            this.copyStaticListToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.listDataCopyToolStripMenuItem,
+            this.onlyDataCopyToolStripMenuItem});
+            this.copyStaticListToolStripMenuItem.Name = "copyStaticListToolStripMenuItem";
+            this.copyStaticListToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.copyStaticListToolStripMenuItem.Text = "Copy Static List";
+            this.copyStaticListToolStripMenuItem.Click += new System.EventHandler(this.copyListToolStripMenuItem_Click);
+            // 
+            // listDataCopyToolStripMenuItem
+            // 
+            this.listDataCopyToolStripMenuItem.Name = "listDataCopyToolStripMenuItem";
+            this.listDataCopyToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.listDataCopyToolStripMenuItem.Text = "List + Data";
+            this.listDataCopyToolStripMenuItem.Click += new System.EventHandler(this.listDataCopyToolStripMenuItem_Click);
+            // 
+            // onlyDataCopyToolStripMenuItem
+            // 
+            this.onlyDataCopyToolStripMenuItem.Name = "onlyDataCopyToolStripMenuItem";
+            this.onlyDataCopyToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.onlyDataCopyToolStripMenuItem.Text = "Only Data";
+            this.onlyDataCopyToolStripMenuItem.Visible = false;
+            // 
+            // copyListMenuItem1
+            // 
+            this.copyListMenuItem1.Name = "copyListMenuItem1";
+            this.copyListMenuItem1.Size = new System.Drawing.Size(219, 22);
+            this.copyListMenuItem1.Text = "Copy List";
+            this.copyListMenuItem1.ToolTipText = "No data is copied for static lists";
+            // 
+            // toolStripButtonDeleteList
+            // 
+            this.toolStripButtonDeleteList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonDeleteList.Enabled = false;
+            this.toolStripButtonDeleteList.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDeleteList.Image")));
+            this.toolStripButtonDeleteList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDeleteList.Name = "toolStripButtonDeleteList";
+            this.toolStripButtonDeleteList.Size = new System.Drawing.Size(44, 22);
+            this.toolStripButtonDeleteList.Text = "Delete";
+            this.toolStripButtonDeleteList.Click += new System.EventHandler(this.toolStripButtonDeleteList_Click);
             // 
             // splitContainer1
             // 
@@ -117,7 +202,6 @@
             this.ColumnCount});
             this.dataGridViewLists.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewLists.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewLists.MultiSelect = false;
             this.dataGridViewLists.Name = "dataGridViewLists";
             this.dataGridViewLists.ReadOnly = true;
             this.dataGridViewLists.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -125,6 +209,41 @@
             this.dataGridViewLists.Size = new System.Drawing.Size(614, 201);
             this.dataGridViewLists.TabIndex = 1;
             this.dataGridViewLists.SelectionChanged += new System.EventHandler(this.dataGridViewLists_SelectionChanged);
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnName.DataPropertyName = "Name";
+            this.ColumnName.HeaderText = "Name";
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnType
+            // 
+            this.ColumnType.DataPropertyName = "Dynamic";
+            this.ColumnType.FalseValue = "";
+            this.ColumnType.HeaderText = "Dynamic";
+            this.ColumnType.Name = "ColumnType";
+            this.ColumnType.ReadOnly = true;
+            this.ColumnType.Width = 54;
+            // 
+            // ColumnMemberType
+            // 
+            this.ColumnMemberType.DataPropertyName = "Type";
+            this.ColumnMemberType.HeaderText = "Member Type";
+            this.ColumnMemberType.Name = "ColumnMemberType";
+            this.ColumnMemberType.ReadOnly = true;
+            this.ColumnMemberType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnMemberType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnMemberType.Width = 78;
+            // 
+            // ColumnCount
+            // 
+            this.ColumnCount.DataPropertyName = "Count";
+            this.ColumnCount.HeaderText = "Member Count";
+            this.ColumnCount.Name = "ColumnCount";
+            this.ColumnCount.ReadOnly = true;
+            this.ColumnCount.Width = 101;
             // 
             // toolStripQuery
             // 
@@ -187,41 +306,6 @@
             this.richTextBoxQuery.TabIndex = 0;
             this.richTextBoxQuery.Text = "";
             // 
-            // ColumnName
-            // 
-            this.ColumnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnName.DataPropertyName = "Name";
-            this.ColumnName.HeaderText = "Name";
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            // 
-            // ColumnType
-            // 
-            this.ColumnType.DataPropertyName = "Dynamic";
-            this.ColumnType.FalseValue = "";
-            this.ColumnType.HeaderText = "Dynamic";
-            this.ColumnType.Name = "ColumnType";
-            this.ColumnType.ReadOnly = true;
-            this.ColumnType.Width = 54;
-            // 
-            // ColumnMemberType
-            // 
-            this.ColumnMemberType.DataPropertyName = "Type";
-            this.ColumnMemberType.HeaderText = "Member Type";
-            this.ColumnMemberType.Name = "ColumnMemberType";
-            this.ColumnMemberType.ReadOnly = true;
-            this.ColumnMemberType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnMemberType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnMemberType.Width = 78;
-            // 
-            // ColumnCount
-            // 
-            this.ColumnCount.DataPropertyName = "Count";
-            this.ColumnCount.HeaderText = "Member Count";
-            this.ColumnCount.Name = "ColumnCount";
-            this.ColumnCount.ReadOnly = true;
-            this.ColumnCount.Width = 101;
-            // 
             // MainControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,5 +346,13 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMemberType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCount;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButtonCopy;
+        private System.Windows.Forms.ToolStripMenuItem copyToStaticListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyStaticListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButtonCopyUrl;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDeleteList;
+        private System.Windows.Forms.ToolStripMenuItem listDataCopyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem onlyDataCopyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyListMenuItem1;
     }
 }

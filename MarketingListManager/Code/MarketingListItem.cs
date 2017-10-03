@@ -15,6 +15,7 @@ namespace MarketingListManager.Code
         public long Count { get; set; }
         public int Type { get; set; }
         public bool Dynamic { get; set; }
+        public Entity FullRecord { get; set; }
 
 
         public static List<MarketingListItem> LoadFromEntityCollection(EntityCollection collection)
@@ -29,7 +30,8 @@ namespace MarketingListManager.Code
                     Id = (Guid)item["listid"],                     
                     Name = (string)item["listname"],                    
                     Dynamic = (bool)item["type"],
-                    Type = (int)item["membertype"]
+                    Type = (int)item["membertype"],
+                    FullRecord = item
                 };
                 
                 if (item.Contains("membercount")) newList.Count = (int)item["membercount"];
