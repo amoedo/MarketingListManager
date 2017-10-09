@@ -139,16 +139,16 @@
             // listDataCopyToolStripMenuItem
             // 
             this.listDataCopyToolStripMenuItem.Name = "listDataCopyToolStripMenuItem";
-            this.listDataCopyToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.listDataCopyToolStripMenuItem.Text = "List + Data";
+            this.listDataCopyToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.listDataCopyToolStripMenuItem.Text = "To New Static List (With Data)";
             this.listDataCopyToolStripMenuItem.Click += new System.EventHandler(this.listDataCopyToolStripMenuItem_Click);
             // 
             // onlyDataCopyToolStripMenuItem
             // 
             this.onlyDataCopyToolStripMenuItem.Name = "onlyDataCopyToolStripMenuItem";
-            this.onlyDataCopyToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.onlyDataCopyToolStripMenuItem.Text = "Only Data";
-            this.onlyDataCopyToolStripMenuItem.Visible = false;
+            this.onlyDataCopyToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.onlyDataCopyToolStripMenuItem.Text = "Add Members to Existing List";
+            this.onlyDataCopyToolStripMenuItem.Click += new System.EventHandler(this.onlyDataCopyToolStripMenuItem_Click);
             // 
             // copyListMenuItem1
             // 

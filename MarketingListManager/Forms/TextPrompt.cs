@@ -21,10 +21,12 @@ namespace MarketingListManager.Forms
         {
             InitializeComponent();
             lblPromptText.Text = promptInstructions;
+            this.Text = promptInstructions;
         }
         public TextPrompt(object sender, string promptInstructions,string defaultValue) : this(sender, promptInstructions)
         {
             tbText.Text = defaultValue;
+            
         }
 
         private void BtnSubmitText_Click(object sender, EventArgs e)

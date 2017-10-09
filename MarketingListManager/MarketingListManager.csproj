@@ -113,8 +113,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\AddMembersToOtherListsParameters.cs" />
     <Compile Include="Code\CopyListParameters.cs" />
     <Compile Include="Code\MarketingListItem.cs" />
+    <Compile Include="Forms\EntityListPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EntityListPrompt.Designer.cs">
+      <DependentUpon>EntityListPrompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TextPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +143,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\EntityListPrompt.resx">
+      <DependentUpon>EntityListPrompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TextPrompt.resx">
       <DependentUpon>TextPrompt.cs</DependentUpon>
     </EmbeddedResource>

@@ -20,22 +20,16 @@ using MarketingListManager.Forms;
 namespace MarketingListManager
 {
 
-    public partial class MainControl : PluginControlBase
+    public partial class MainControl : PluginControlBase, IGitHubPlugin,IHelpPlugin
     {
+        string IGitHubPlugin.RepositoryName => "MarketingListManager";
+
+        string IGitHubPlugin.UserName => "stevendewaele";
         public MainControl()
         {
             InitializeComponent();
         }
-
-        public string RepositoryName
-        {
-            get { return "MarketingListManager"; }
-        }
-
-        public string UserName
-        {
-            get { return "amoedo"; }
-        }
+        public string HelpUrl => "https://github.com/stevendewaele/MarketingListManager/wiki";
 
         private MarketingListItem currentItem;
 
@@ -270,7 +264,31 @@ namespace MarketingListManager
                    }
                });
         }
-
+        private void AddMembersToOtherLists(AddMembersToOtherListsParameters parameters)
+        {
+            WorkAsync(
+                new WorkAsyncInfo
+                {
+                    Message="Add Member to Other Lists",
+                    Work = (w, ae) =>
+                    {
+                        foreach (var destinationList in parameters.DestinationLists)
+                        {
+                            CopyMembersListRequest rq = new CopyMembersListRequest { SourceListId = parameters.SourceList.Id, TargetListId = destinationList.Id };
+                            this.Service.Execute(rq);
+                        }
+                    },
+                    PostWorkCallBack = ae =>
+                    {
+                        ExecuteMethod(ProcessLoadLists);
+                    },
+                    ProgressChanged = ae =>
+                    {
+                        SetWorkingMessage(ae.UserState.ToString());
+                    }
+                }
+                );
+        }
 
         private void dataGridViewLists_SelectionChanged(object sender, EventArgs e)
         {
@@ -367,6 +385,17 @@ namespace MarketingListManager
             if (dResult == DialogResult.OK)
             {
                 ExecuteMethod<CopyListParameters>(CopyList, new CopyListParameters { MarketingList = currentItem, NewName = t.Value,NextFunction= CopyListWithData });
+            }
+        }
+
+        private void onlyDataCopyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var t = new EntityListPrompt(this, "Choose on which list you want to add this list members.", (List<MarketingListItem>)dataGridViewLists.DataSource,false,this.currentItem.Type);
+            DialogResult dResult = t.ShowDialog();
+            if (dResult == DialogResult.OK)
+            {
+                var selectedLists = t.Value;
+                ExecuteMethod<AddMembersToOtherListsParameters>(AddMembersToOtherLists, new AddMembersToOtherListsParameters {SourceList=this.currentItem,DestinationLists=selectedLists });
             }
         }
     }

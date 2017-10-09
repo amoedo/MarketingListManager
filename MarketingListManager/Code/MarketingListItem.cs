@@ -16,6 +16,7 @@ namespace MarketingListManager.Code
         public int Type { get; set; }
         public bool Dynamic { get; set; }
         public Entity FullRecord { get; set; }
+        public bool Selected { get; set; }
 
 
         public static List<MarketingListItem> LoadFromEntityCollection(EntityCollection collection)

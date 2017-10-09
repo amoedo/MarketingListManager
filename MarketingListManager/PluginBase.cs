@@ -19,6 +19,8 @@ ExportMetadata("Name", "Ultimate Marketing List Manager"),
 ExportMetadata("Description", "The Ultimate Marketing List Manager. Copy, delete or many more with marketing lists.")]
     public class Plugin: PluginBase
     {
+     
+
         public override IXrmToolBoxPluginControl GetControl()
         {
             
